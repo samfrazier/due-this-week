@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
+// Loaded lazily (see webpack.config.js): this stylesheet is only added to the
+// page while the picker is open, so it can't restyle other websites.
+import dayPickerStyles from 'react-day-picker/dist/style.css';
 import styled from 'styled-components';
 import { THEME_COLOR, THEME_COLOR_LIGHT } from '../../../constants';
 import TextInput from './TextInput';
@@ -36,6 +38,13 @@ export default function DatePick({
   setSelected,
 }: Props): JSX.Element {
   const [pickerVisible, setPickerVisible] = useState(false);
+  useEffect(() => {
+    if (!pickerVisible) return;
+    dayPickerStyles.use();
+    return () => {
+      dayPickerStyles.unuse();
+    };
+  }, [pickerVisible]);
   function onSelect(date?: Date) {
     setPickerVisible(false);
     setSelected(date);

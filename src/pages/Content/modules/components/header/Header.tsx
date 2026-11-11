@@ -88,14 +88,23 @@ export default function Header({
       onNextClick();
     }
   }
+  // Ask the background worker to open Settings instead of linking to
+  // chrome-extension://…/options.html. A direct link would require exposing
+  // options.html to every website (web_accessible_resources), which lets sites
+  // detect that the extension is installed.
+  function openSettings(e: React.MouseEvent) {
+    e.preventDefault();
+    chrome.runtime.sendMessage({ type: 'open-options' });
+  }
   return (
     <TitleDiv dark={dark}>
       <LeftFloat dark={dark}>
         <span style={{ marginRight: '4px' }}>{tasks}</span>
         <a
-          href={chrome.runtime.getURL('options.html')}
-          rel="noreferrer"
-          target="_blank"
+          aria-label="Due This Week settings"
+          href="#"
+          onClick={openSettings}
+          title="Settings"
         >
           {SettingsIcon}
         </a>

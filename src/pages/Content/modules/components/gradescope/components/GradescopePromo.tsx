@@ -46,8 +46,8 @@ export default function GradescopePromo({ onSubmit, onExit }: Props) {
 
   const bodyText = (
     <>
-      Click <strong>“Sync with Due This Week”</strong> to automatically add
-      this course’s Gradescope assignments to Due This Week.{' '}
+      Click <strong>“Sync with Due This Week”</strong> to automatically add this
+      course’s Gradescope assignments to Due This Week.{' '}
       <strong>This must be done separately for each course</strong> you want to
       sync. Assignments will be updated whenever you visit Gradescope (to submit
       an assignment, for example).
