@@ -93,7 +93,14 @@ Source code and support: https://github.com/samfrazier/due-this-week
 
 **Extension logo:** `store/logo-300.png` (300×300)
 
-**Screenshots** (optional, up to 6, **1280×800** or 640×480): see the screenshot steps in the chat, or take them on the live demo page.
+**Screenshots** (optional, up to 6, **1280×800** or 640×480). Ready in `store/screenshots/`, all 1280×800 with sample data only, so no real student information appears. Upload them in this order:
+1. `1-dashboard.png`: the sidebar on a Canvas-style dashboard
+2. `2-sidebar-closeup.png`: progress rings and upcoming assignments, up close
+3. `3-new-task.png`: adding a custom task (date, link, weekly repeat, course)
+4. `4-completed.png`: the Completed tab
+5. `5-settings.png`: the Settings page
+
+These were made by rendering the real built extension code (demo mode, default settings) in headless Microsoft Edge.
 
 **Search terms** (at most 7 terms and 21 words in total, each at most 30 characters)
 ```
