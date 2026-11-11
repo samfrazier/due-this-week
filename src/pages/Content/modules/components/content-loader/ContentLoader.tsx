@@ -60,7 +60,7 @@ function ContentLoader({
       animationStart.current = Date.now();
     } else {
       const loadTime = Date.now() - animationStart.current;
-      console.log('Tasks for Canvas: ' + loadTime / 1000 + 's load');
+      console.log('Due This Week: ' + loadTime / 1000 + 's load');
       // optional delay if loaded too fast
       if (loadTime < MIN_LOAD_TIME) {
         const to = setTimeout(() => {

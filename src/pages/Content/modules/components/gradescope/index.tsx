@@ -26,6 +26,6 @@ export default function runGradescope(
     container
   );
   console.log(
-    'Tasks for Canvas: Check out the repo! https://github.com/jtcheng26/canvas-task-extension'
+    'Due This Week: Check out the repo! https://github.com/samfrazier/due-this-week'
   );
 }

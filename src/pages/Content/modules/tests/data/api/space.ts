@@ -153,6 +153,11 @@ export const all_planner_tests: TestSpace<PlannerAssignment> = {
         'Created using Tasks for Canvas\nInstructor Note\n\n1',
         'Created using Tasks for Canvas\nNote\n#\n1',
         'Created using Tasks for Canvas\nNote\n#\n\n',
+        // Our own marker (new tasks); the legacy marker above must keep working.
+        'Created using Due This Week',
+        'Created using Due This Week\nInstructor Note\n#',
+        'Created using Due This Week\nInstructor Note\n\n1',
+        'Created using Due This Week\nCustom Task\n#\n1',
       ],
       due_at: [new Date().toISOString(), undefined],
       todo_date: [new Date().toISOString(), undefined],

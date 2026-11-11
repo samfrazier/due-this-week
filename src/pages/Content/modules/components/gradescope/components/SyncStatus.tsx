@@ -51,8 +51,8 @@ type Props = {
 
 export default function SyncStatus({ synced, onClick }: Props) {
   const text = synced
-    ? 'Synced with Tasks for Canvas'
-    : 'Not Synced with Tasks for Canvas';
+    ? 'Synced with Due This Week'
+    : 'Not Synced with Due This Week';
   const icon = synced ? SyncedIcon : NotSyncedIcon;
   return (
     <SyncedDiv onClick={onClick} synced={synced}>

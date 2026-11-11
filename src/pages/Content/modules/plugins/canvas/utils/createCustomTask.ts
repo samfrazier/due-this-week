@@ -1,5 +1,6 @@
 import { FinalAssignment } from '../../../types';
 import apiReq from '../../../utils/apiReq';
+import { CUSTOM_TASK_MARKER } from '../../../constants';
 
 /* Create a custom task item (Planner note). */
 export default async function createCustomTaskCanvas(
@@ -14,7 +15,8 @@ export default async function createCustomTaskCanvas(
       title: title,
       todo_date: date,
       details:
-        'Created using Tasks for Canvas\n' +
+        CUSTOM_TASK_MARKER +
+        '\n' +
         (grading ? 'Instructor Note\n' : 'Custom Task\n'),
     };
 
