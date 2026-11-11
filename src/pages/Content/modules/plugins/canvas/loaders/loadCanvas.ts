@@ -7,7 +7,7 @@ import {
 } from '../../../types';
 import baseURL from '../../../utils/baseURL';
 import { DemoAssignments } from '../../../tests/demo';
-import { AssignmentDefaults } from '../../../constants';
+import { AssignmentDefaults, CUSTOM_TASK_MARKERS } from '../../../constants';
 import isDemo from '../../../utils/isDemo';
 import JSONBigInt from 'json-bigint';
 import loadNeedsGrading from './loadNeedsGrading';
@@ -153,7 +153,7 @@ export function convertPlannerAssignments(
       // custom task with details
       if (
         parsed.length >= 2 &&
-        parsed[0].trim() === 'Created using Tasks for Canvas'
+        CUSTOM_TASK_MARKERS.includes(parsed[0].trim())
       ) {
         if (parsed[1].trim() === 'Instructor Note') {
           converted.needs_grading_count = 1;

@@ -11,15 +11,12 @@ function applyDefaults(options: Options): Options {
   };
 }
 
-/* Set the logo and title to the extension's web store url */
+/* Set the logo and title link.
+ * TODO: once Due This Week is listed on Edge Add-ons, link to the store page
+ * (and pick Chrome/Firefox store URLs by browser if we publish there too).
+ * Until then, link to the GitHub repo. */
 function setStoreLinks() {
-  // @ts-expect-error: InstallTrigger is only in Firefox
-  const isFirefox = typeof InstallTrigger !== 'undefined';
-  let storeURL =
-    'https://chrome.google.com/webstore/detail/tasks-for-canvas/kabafodfnabokkkddjbnkgbcbmipdlmb';
-  if (isFirefox)
-    storeURL =
-      'https://addons.mozilla.org/en-US/firefox/addon/tasks-for-canvas';
+  const storeURL = 'https://github.com/samfrazier/due-this-week';
 
   Array.from(document.getElementsByTagName('a')).forEach((elem) => {
     if (elem.className === 'store-link') elem.href = storeURL;

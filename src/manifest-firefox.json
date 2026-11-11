@@ -1,13 +1,21 @@
 {
   "manifest_version": 2,
-  "name": "Tasks for Canvas – now supporting Blackboard, D2L Brightspace",
-  "description": "A better to-do list sidebar for Canvas, Blackboard, and D2L Brightspace.",
-  "version": "1.4.0",
+  "name": "Due This Week: To-Do Sidebar for Canvas LMS",
+  "description": "Free, private weekly to-do sidebar for Canvas, Blackboard, and D2L Brightspace. Unofficial; not affiliated with Instructure.",
+  "version": "1.0.0",
   "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
     "128": "icon-128.png"
   },
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_title": "Due This Week",
+    "default_icon": {
+      "16": "icon-16.png",
+      "32": "icon-32.png"
+    }
   },
   "web_accessible_resources": ["icon-128.png", "options.html"],
   "content_security_policy": "script-src 'self'; object-src 'self'",
@@ -31,7 +39,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "tasksforcanvas@jtchengdev.com"
+      "id": "due-this-week@samfrazier.github.io"
     }
   }
 }
