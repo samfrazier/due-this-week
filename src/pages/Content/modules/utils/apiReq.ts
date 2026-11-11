@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import baseURL from './baseURL';
+import isDemo from './isDemo';
 import JSONBigInt from 'json-bigint';
 
 /* Send a post request w/ CSRF Token. */
@@ -9,6 +10,10 @@ export default async function apiReq(
   method: 'post' | 'put' | 'delete',
   id?: string
 ): Promise<AxiosResponse> {
+  // Demo page (our website, sample data): there's no LMS to save to, so
+  // pretend writes succeed instead of sending requests to the demo host.
+  if (isDemo()) return { data: null, status: 200 } as AxiosResponse;
+
   const CSRFtoken = function () {
     return decodeURIComponent(
       (document.cookie.match('(^|;) *_csrf_token=([^;]*)') || '')[2]

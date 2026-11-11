@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live demo – Due This Week</title>
+    <link rel="icon" href="logo.png" />
+    <!--
+      This page imitates the parts of a Canvas dashboard that Due This Week
+      looks for (#application.ic-app and the #right-side sidebar). With the
+      extension installed, the sidebar appears here using built-in SAMPLE data:
+      no Canvas account needed. Nothing you do here is saved anywhere.
+    -->
+    <style>
+      :root {
+        --ic-brand-global-nav-bgd: #2d3b45;
+        --ic-brand-primary: #0b6bd3;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto,
+          sans-serif;
+        color: #2d3b45;
+        background: #fff;
+      }
+      #application {
+        display: flex;
+        min-height: 100vh;
+      }
+      .nav {
+        width: 84px;
+        flex: none;
+        background: var(--ic-brand-global-nav-bgd);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 16px;
+        gap: 22px;
+      }
+      .nav span {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .main {
+        flex: 1;
+        display: flex;
+        min-width: 0;
+      }
+      .content {
+        flex: 1;
+        padding: 24px 32px;
+        min-width: 0;
+      }
+      .banner {
+        background: #e8f1fb;
+        border: 1px solid #b9d6f5;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+      .banner a {
+        color: var(--ic-brand-primary);
+      }
+      h1 {
+        font-size: 28px;
+        font-weight: 400;
+        margin: 0 0 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #c7cdd1;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 24px;
+      }
+      .card {
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+      }
+      .card .hero {
+        height: 140px;
+      }
+      .card .body {
+        padding: 12px 14px 18px;
+      }
+      .card .name {
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .card .term {
+        font-size: 13px;
+        color: #6b7780;
+      }
+      #right-side-wrapper {
+        width: 310px;
+        flex: none;
+        border-left: 1px solid #e5e8ea;
+        padding: 24px 22px;
+      }
+      .no-extension {
+        font-size: 14px;
+        color: #6b7780;
+      }
+      #tfc-wall-rose ~ #right-side .no-extension {
+        display: none;
+      }
+      @media (max-width: 860px) {
+        .main {
+          flex-direction: column;
+        }
+        #right-side-wrapper {
+          width: 100%;
+          border-left: none;
+          border-top: 1px solid #e5e8ea;
+        }
+        .nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="application" class="ic-app">
+      <nav class="nav" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </nav>
+      <div class="main">
+        <div class="content">
+          <div class="banner">
+            <strong>Due This Week, live demo.</strong> This page imitates a
+            Canvas dashboard and uses sample data. Install the extension and
+            reload this page to see the sidebar on the right.
+            <a href="./">About Due This Week</a> ·
+            <a href="privacy.html">Privacy</a>
+          </div>
+          <h1>Dashboard</h1>
+          <div class="cards">
+            <div class="card">
+              <div class="hero" style="background: #4989f4"></div>
+              <div class="body">
+                <div class="name">Calculus 2 - Parisi</div>
+                <div class="term">Fall 2026</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="hero" style="background: #dc4b3f"></div>
+              <div class="body">
+                <div class="name">English Literature - Russell</div>
+                <div class="term">Fall 2026</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="hero" style="background: #7e57c2"></div>
+              <div class="body">
+                <div class="name">US History - Jones</div>
+                <div class="term">Fall 2026</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="hero" style="background: #1aa260"></div>
+              <div class="body">
+                <div class="name">Biology - McCoy</div>
+                <div class="term">Fall 2026</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="hero" style="background: #ffb300"></div>
+              <div class="body">
+                <div class="name">Computer Science — Susan</div>
+                <div class="term">Fall 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="right-side-wrapper">
+          <aside id="right-side" role="complementary">
+            <div class="Sidebar__TodoListContainer">
+              <p class="no-extension">
+                The Due This Week sidebar will appear here once the extension is
+                installed.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
