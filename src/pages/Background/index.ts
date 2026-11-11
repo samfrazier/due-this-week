@@ -15,3 +15,11 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.remove(['client_id', 'install_time']);
 });
+
+// The sidebar's ⚙️ button asks us to open Settings. Content scripts can't
+// call openOptionsPage() themselves.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message && message.type === 'open-options') {
+    chrome.runtime.openOptionsPage();
+  }
+});

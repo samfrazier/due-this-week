@@ -28,12 +28,6 @@
       "all_frames": true
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": ["icon-128.png", "options.html"],
-      "matches": ["https://*/*"]
-    }
-  ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }
