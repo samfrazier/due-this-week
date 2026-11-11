@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Course, PlannerAssignment } from '../../types';
-import { EXPERIMENT_CONFIG_URL } from '../../constants';
 import {
   courses_tests,
   custom_colors_tests,
@@ -45,8 +44,6 @@ export function mockAPI(
       return Promise.resolve({ headers: {}, data: [] });
     if (urlMatches(url, '/api/v1/users/self/todo'))
       return Promise.resolve({ headers: {}, data: [] });
-    if (url === EXPERIMENT_CONFIG_URL)
-      return Promise.resolve({ headers: {}, data: '{ "experiments": [] }' });
     return Promise.resolve({ headers: {}, data: null });
   });
 
@@ -113,8 +110,6 @@ export function mockAPIData(
       return Promise.resolve({ headers: {}, data: [] });
     if (urlMatches(url, '/api/v1/users/self/todo'))
       return Promise.resolve({ headers: {}, data: [] });
-    if (url === EXPERIMENT_CONFIG_URL)
-      return Promise.resolve({ headers: {}, data: '{ "experiments": [] }' });
     return Promise.resolve({ headers: {}, data: null });
   });
   mockedAxios.post.mockImplementation((url) => {

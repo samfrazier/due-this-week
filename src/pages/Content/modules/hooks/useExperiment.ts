@@ -1,75 +1,29 @@
 import { ExperimentConfig } from '../types';
-import { CLIENT_ID_LENGTH, EXPERIMENT_CONFIG_URL } from '../constants';
+import { CLIENT_ID_LENGTH } from '../constants';
 import { useEffect, useState, useMemo, useContext } from 'react';
-import isDemo from '../utils/isDemo';
 import { ExperimentsContext } from '../contexts/contexts';
-import axios from 'axios';
 
-// cryptographically secure random number of length N
-// https://codeql.github.com/codeql-query-help/javascript/js-biased-cryptographic-random/
-function generateRandomNumber(length: number): string {
-  let num = '';
-  let i = 0;
-  while (num.length < length) {
-    i += 1;
-    if (i > 100) break; // failsafe to not hang everything in case something breaks
-    const byte = window.crypto.getRandomValues(new Uint8Array(1))[0];
-    if (byte >= 250) {
-      continue;
-    }
-    num += (byte % 10).toString();
-  }
-
-  return num;
-}
-
-async function getClientId(): Promise<string> {
-  return new Promise((resolve) => {
-    if (isDemo()) {
-      resolve('000000000');
-      return;
-    }
-    chrome.storage.sync.get(['client_id'], function (result) {
-      let client_id = result['client_id'];
-      if (!client_id) {
-        client_id = generateRandomNumber(CLIENT_ID_LENGTH);
-        chrome.storage.sync.set({ client_id: client_id }, () => {
-          resolve(client_id);
-        });
-      } else resolve(client_id);
-    });
-  });
-}
-
-async function getExperimentConfigs(): Promise<ExperimentConfig[]> {
-  try {
-    const res = await axios.get(EXPERIMENT_CONFIG_URL);
-    return (await res.data)['experiments'] as ExperimentConfig[];
-  } catch (err) {
-    return [];
-  }
-}
+/*
+ * Due This Week: experiments are disabled.
+ *
+ * Upstream fetched A/B-test config from a server we don't control
+ * (canvas-task-static.onrender.com) and created a random per-user
+ * `client_id` that was synced across devices and sent with the uninstall URL.
+ * We don't make any network requests except to the user's own LMS, and we
+ * don't create user identifiers, so this hub always reports
+ * "no experiments, no user". <Experiment> therefore always renders its control
+ * (first) child.
+ */
 
 export interface ExperimentsHubInterface {
   configs: ExperimentConfig[];
   userId: string;
 }
 
+const NO_EXPERIMENTS: ExperimentsHubInterface = { configs: [], userId: '' };
+
 export function useExperiments(): ExperimentsHubInterface {
-  const [userId, setUserId] = useState<string>('');
-  const [experimentConfigs, setExperimentConfigs] = useState<
-    ExperimentConfig[]
-  >([]);
-
-  useEffect(() => {
-    if (isDemo()) return;
-    (async () => {
-      setExperimentConfigs(await getExperimentConfigs());
-      setUserId(await getClientId());
-    })();
-  }, []);
-
-  return { configs: experimentConfigs, userId };
+  return NO_EXPERIMENTS;
 }
 
 export interface ExperimentInterface {

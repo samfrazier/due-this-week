@@ -1,26 +1,17 @@
-// Because I can't import these from the Content module
-const UNINSTALL_URL = 'https://www.tasksforcanvas.info/uninstall';
-const INSTALL_URL = 'https://www.tasksforcanvas.info/getting-started';
+/*
+ * Due This Week: background service worker.
+ *
+ * Upstream used this file to open the original author's website on install
+ * and to set an uninstall URL that sent the install time and a random client
+ * ID to that site. We removed both, so the extension makes no requests except
+ * to the user's own LMS.
+ *
+ * The file is kept because manifest.json registers it as the service worker.
+ * Future background logic (for example, a badge count) can go here.
+ */
 
-chrome.runtime.onInstalled.addListener(function (object) {
-  if (object.reason === 'install') {
-    const now = new Date().getTime();
-    chrome.tabs.create({ url: `${INSTALL_URL}?ref=install` });
-    chrome.storage.sync.set({ install_time: now });
-    chrome.runtime.setUninstallURL(`${UNINSTALL_URL}?b=${now}&c=133`);
-  }
-});
-
-chrome.storage.onChanged.addListener(function (changes) {
-  if ('client_id' in changes) {
-    chrome.storage.sync.get(['client_id', 'install_time'], (result) => {
-      if (!result['install_time']) result['install_time'] = '1693540800000';
-      const params = new URLSearchParams({
-        a: result['client_id'],
-        b: result['install_time'],
-        c: '133',
-      });
-      chrome.runtime.setUninstallURL(`${UNINSTALL_URL}?${params.toString()}`);
-    });
-  }
+// Clean up the tracking ID that older upstream versions stored, in case
+// someone's synced settings carry it over.
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.remove(['client_id', 'install_time']);
 });
