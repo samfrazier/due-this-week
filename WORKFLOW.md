@@ -95,6 +95,17 @@ Still open:
 - [ ] Optional: upgrade outdated dependencies (axios 0.21 has known security advisories)
 
 ### Phase 4: Publish to Edge Add-ons
+Prepared on branch `publish-prep` (Nov 11, 2026):
+- [x] Website in `docs/`: home page, **privacy policy**, and a **live demo** (`demo.html`) that imitates a Canvas dashboard. On our own domain the extension uses sample data, so reviewers need no Canvas account. Simulated: sidebar renders, 0 network requests, 0 errors.
+- [x] Demo mode no longer sends write requests (`apiReq` returns a fake success)
+- [x] `store/LISTING.md`: every Partner Center field ready to paste (privacy answers, permission justifications, description, search terms, certification notes)
+- [x] `npm run package` creates `due-this-week-<version>.zip` (MV3, `storage` only, no eval or remote code)
+- [ ] Merge `publish-prep`, then turn on GitHub Pages (Settings → Pages → `main` / `/docs`)
+- [ ] You: register a Partner Center developer account (free)
+- [ ] Optional: screenshots at 1280×800 from the live demo
+- [ ] Submit (Hidden first), wait up to 7 business days, then go Public
+
+Original checklist:
 - [ ] Register for a free Partner Center account (sign in with GitHub)
 - [ ] `npm run build && npm run zip`, then upload `build.zip`
 - [ ] Listing: description, 1280×800 screenshots, and a 300×300 logo
