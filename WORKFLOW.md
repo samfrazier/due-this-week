@@ -81,6 +81,14 @@ Name chosen: **Due This Week**. Work is on branch `privacy-cleanup`.
 - **Learn:** reading an unfamiliar codebase, extension APIs, safe refactoring
 
 ### Phase 3: Edge polish and fixes
+Done on branch `polish` (Nov 11, 2026):
+- [x] **Stop breaking other sites (#159/#160).** The date picker's global `.rdp` CSS was injected on every https page. It's now a lazy `style-loader` stylesheet that's only present while our picker is open. Verified: 1 → 0 injected styles on a non-LMS page.
+- [x] **Security.** axios 0.21 → 1.21.0 (pinned). Overrides: `@babel/runtime` 7.29.10, `follow-redirects` 1.16.2, `lodash` 4.18.1. Runtime `npm audit` shows 0. All new packages are at least 15 days old. (The ~109 dev-tool advisories are build-time only and remain.)
+- [x] **Edge review.** Removed `web_accessible_resources`, so sites can no longer detect the extension. The ⚙️ button now asks the background worker to open Settings. Fixed the 404 course-color help link (#174).
+- [x] **Progress ring.** A fully graded TA assignment showed 0% (`0 || total` bug). The value is now clamped to 0..total (#173). Added 8 unit tests.
+- Checked, no change needed: innerHTML warnings (#24, in React itself, not our code); hidden New Task button (#127) and list length (#131) already fixed upstream; streak issues (#155/#165) are in unpublished store code (#158), not this repo; overdue setting (#152) can't be reproduced from code.
+
+Still open:
 - [ ] Test on Card View and List View dashboards, plus dark and high-contrast themes
 - [ ] Triage the 46 open upstream issues and fix the ones that matter most
 - [ ] Optional: the `optional_host_permissions` "Add my school" flow
