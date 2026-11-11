@@ -72,9 +72,27 @@ var options = (args) => {
     module: {
       rules: [
         {
+          // Third-party stylesheets with global class names (e.g. the date
+          // picker's `.rdp`) are injected lazily: only while our component is
+          // mounted. The content script loads on every https site, so an eager
+          // <style> tag would restyle other sites that use the same library
+          // (upstream issues #159, #160).
+          test: /\.css$/,
+          include: /node_modules[\\/]react-day-picker/,
+          use: [
+            {
+              loader: 'style-loader',
+              options: { injectType: 'lazyStyleTag' },
+            },
+            {
+              loader: 'css-loader',
+            },
+          ],
+        },
+        {
           // look for .css or .scss files
           test: /\.(css)$/,
-          // in the `src` directory
+          exclude: /node_modules[\\/]react-day-picker/,
           use: [
             {
               loader: 'style-loader',
