@@ -26,7 +26,7 @@
   "dependencies": {
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
-    "axios": "^0.21.1",
+    "axios": "1.21.0",
     "d3-ease": "^3.0.1",
     "immutability-helper": "^3.1.1",
     "json-bigint": "^1.0.0",
@@ -38,6 +38,11 @@
     "react-move": "^6.5.0",
     "string-similarity": "^4.0.4",
     "styled-components": "^5.2.1"
+  },
+  "overrides": {
+    "@babel/runtime": "7.29.10",
+    "follow-redirects": "1.16.2",
+    "lodash": "4.18.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
