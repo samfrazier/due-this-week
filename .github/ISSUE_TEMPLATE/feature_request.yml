@@ -1,0 +1,45 @@
+name: Suggest a feature
+description: An idea that would make Due This Week more useful.
+title: "[Idea]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! 💡 Due This Week is free and privacy-first, so ideas that need accounts, tracking, or a server probably won't fit, but everything else is welcome.
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like it to do?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would this help you?
+      description: What problem does it solve in your week?
+  - type: dropdown
+    id: lms
+    attributes:
+      label: Which learning platform do you use?
+      multiple: true
+      options:
+        - Canvas LMS
+        - Blackboard
+        - D2L Brightspace
+        - Moodle
+        - Google Classroom
+        - Schoology
+        - Gradescope
+        - Other
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Which browser do you use?
+      multiple: true
+      options:
+        - Microsoft Edge
+        - Google Chrome
+        - Firefox
+        - Safari
+        - Other

@@ -13,7 +13,7 @@ export const isBrightspace = document.body.classList.contains('d2l-body');
 
 export const BrightspaceLMSConfig: LMSConfig = {
   isActive: isBrightspace,
-  name: 'Demo',
+  name: 'Brightspace',
   storageKey: 'brightspace_custom',
   useAssignments: makeUseAssignments(loadBrightspaceAssignments),
   useCourses: makeUseCourses(loadBrightspaceCourses),

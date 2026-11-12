@@ -6,7 +6,12 @@ import {
 import Course from './course';
 import Options from './options';
 
-export type SupportedLMS = 'Canvas' | 'Demo';
+export type SupportedLMS =
+  | 'Canvas'
+  | 'Blackboard'
+  | 'Brightspace'
+  | 'Gradescope'
+  | 'Demo';
 
 // every interface that needs to be implemented for a new LMS
 export interface LMSConfig {

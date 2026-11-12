@@ -17,8 +17,10 @@ body {
 
   --bg-default: white;
   --bg-dark: #efefef;
-  --bg-theme: #ec412d;
-  --theme-default: #ec412d;
+  /* Due This Week brand blue (from the logo). Links use a slightly darker
+     shade so text keeps WCAG AA contrast on white. */
+  --bg-theme: #0079ee;
+  --theme-default: #0067cc;
 }
 
 .hidden {
@@ -231,6 +233,69 @@ body {
 .label-description a:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+#feedback {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--bg-dark);
+  width: 100%;
+}
+
+#feedback h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: var(--text-dark);
+}
+
+.feedback-text,
+.feedback-note {
+  margin: 0 0 14px;
+  color: var(--text-default);
+  font-size: 15px;
+}
+
+.feedback-note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.feedback-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.feedback-button {
+  flex: 1 1 200px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.feedback-button.primary {
+  background-color: var(--bg-theme);
+  color: white;
+}
+
+.feedback-button.secondary {
+  background-color: var(--bg-default);
+  color: var(--theme-default);
+  border: 2px solid var(--bg-theme);
+}
+
+.feedback-button:hover {
+  opacity: 0.8;
+}
+
+.feedback-button:focus-visible {
+  outline: 3px solid var(--theme-default);
+  outline-offset: 2px;
 }
 
 .checkbox {
