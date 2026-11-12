@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Due This Week: To-Do Sidebar for Canvas LMS",
   "description": "Free, private weekly to-do sidebar for Canvas, Blackboard, and D2L Brightspace. Unofficial; not affiliated with Instructure.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icons": {
     "16": "icon-16.png",
     "32": "icon-32.png",

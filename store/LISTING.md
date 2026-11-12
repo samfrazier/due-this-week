@@ -113,7 +113,24 @@ blackboard
 brightspace
 ```
 
-## 6. Notes for certification
+## Updates: notes for certification
+
+### 1.0.1
+```
+Update 1.0.0 → 1.0.1: small visual update to the Settings page only.
+
+Changes:
+- Settings page accent color changed from red to the extension's brand blue.
+- Added a "Feedback" section at the bottom of Settings with two links: the extension's Edge Add-ons listing (to leave a rating) and the GitHub issues page (bug reports and feature ideas).
+- The Settings logo/title now links to the Edge Add-ons listing.
+- Internal code names for the Blackboard, Brightspace, and Gradescope integrations corrected (no behavior change).
+
+No changes to permissions (still "storage" only), the content script's behavior, data handling, or the privacy policy. No remote code.
+
+To test: open the toolbar icon → Settings (or the gear icon in the sidebar on https://samfrazier.github.io/due-this-week/demo.html) and scroll to the bottom to see the Feedback section.
+```
+
+## 6. Notes for certification (first submission, 1.0.0)
 ```
 No account or login is needed to test.
 
