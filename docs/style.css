@@ -67,6 +67,22 @@ code {
   color: var(--muted);
 }
 
+.store-button {
+  display: inline-block;
+  background: #0078d7;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+}
+
+.store-button:hover,
+.store-button:focus-visible {
+  background: #005fb0;
+  color: #fff;
+}
+
 footer {
   margin-top: 48px;
   font-size: 14px;

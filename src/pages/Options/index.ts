@@ -11,12 +11,11 @@ function applyDefaults(options: Options): Options {
   };
 }
 
-/* Set the logo and title link.
- * TODO: once Due This Week is listed on Edge Add-ons, link to the store page
- * (and pick Chrome/Firefox store URLs by browser if we publish there too).
- * Until then, link to the GitHub repo. */
+/* Set the logo and title link to the extension's store listing.
+ * If we publish to Chrome/Firefox later, pick the store URL by browser here. */
 function setStoreLinks() {
-  const storeURL = 'https://github.com/samfrazier/due-this-week';
+  const storeURL =
+    'https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc';
 
   Array.from(document.getElementsByTagName('a')).forEach((elem) => {
     if (elem.className === 'store-link') elem.href = storeURL;

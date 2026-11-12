@@ -14,7 +14,11 @@ Ever had trouble finding your weekly assignments? Due This Week adds a clean to-
 - Settings are saved in your browser's extension storage.
 
 ## Download
-Coming soon to **Microsoft Edge Add-ons**. Until then, you can [install it from source](#installing-and-running-for-development).
+[![Get it from Microsoft Edge Add-ons](https://img.shields.io/badge/Get_it_from-Microsoft_Edge_Add--ons-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc)
+
+**[Install Due This Week from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc)**. It's free. Want to look first? Try the [live demo](https://samfrazier.github.io/due-this-week/demo.html) with sample data.
+
+Developers can also [install it from source](#installing-and-running-for-development).
 
 ## Features
 
