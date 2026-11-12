@@ -15,7 +15,7 @@ export const isBlackboard =
 
 export const BlackboardLMSConfig: LMSConfig = {
   isActive: isBlackboard,
-  name: 'Demo',
+  name: 'Blackboard',
   storageKey: 'blackboard_custom',
   useAssignments: makeUseAssignments(loadBlackboardAssignments),
   useCourses: makeUseCourses(loadBlackboardCourses),

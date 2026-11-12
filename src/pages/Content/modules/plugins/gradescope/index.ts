@@ -12,7 +12,7 @@ export const isGradescope = window.location.hostname === 'www.gradescope.com';
 
 export const GradescopeLMSConfig: LMSConfig = {
   isActive: isGradescope,
-  name: 'Demo',
+  name: 'Gradescope',
   storageKey: 'gradescope_custom',
   useAssignments: useGradescopeAssignments,
   useCourses: useGradescopeCourses,

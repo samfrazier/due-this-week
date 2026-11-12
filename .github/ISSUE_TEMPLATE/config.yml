@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Rate or review on Microsoft Edge Add-ons
+    url: https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc
+    about: No GitHub account needed. Leave a star rating or a short review.
+  - name: Try the live demo
+    url: https://samfrazier.github.io/due-this-week/demo.html
+    about: See Due This Week with sample data, no login required.

@@ -1,0 +1,64 @@
+name: Report a bug
+description: Something isn't working or looks wrong.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Due This Week! 🙏
+        **Please don't include grades, student names, or other personal information.** If you add a screenshot, blur or crop anything private.
+  - type: dropdown
+    id: lms
+    attributes:
+      label: Which learning platform?
+      options:
+        - Canvas LMS
+        - Blackboard
+        - D2L Brightspace
+        - Gradescope
+        - Other / not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Which browser?
+      options:
+        - Microsoft Edge
+        - Google Chrome
+        - Firefox
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: "Find it at edge://extensions (or chrome://extensions) on the Due This Week card."
+      placeholder: "1.0.0"
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce (if you know them)
+      placeholder: |
+        1. Open the Canvas dashboard
+        2. Click …
+        3. See …
+  - type: dropdown
+    id: view
+    attributes:
+      label: Which dashboard view? (Canvas)
+      options:
+        - Card View
+        - List View
+        - Recent Activity
+        - A course page
+        - Not sure / not Canvas
