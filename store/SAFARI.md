@@ -38,9 +38,9 @@ Icons: `python3 utils/make-mac-icon.py` builds the Mac icon set and `store/mac-i
 
 ## Listing text
 
-**Subtitle** (30 characters max)
+**Subtitle** (30 characters max; the name already says "To-Do Sidebar")
 ```
-To-do sidebar for Canvas LMS
+Weekly planner for Canvas LMS
 ```
 
 **Promotional text** (170 characters max; can change without review)
