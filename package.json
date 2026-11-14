@@ -15,6 +15,7 @@
   "scripts": {
     "build": "node utils/build.js chrome",
     "firefox": "node utils/build.js firefox",
+    "safari": "npm run build && cd safari/'Due This Week' && xcodebuild -scheme 'Due This Week' -configuration Debug -derivedDataPath ../DerivedData CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM= build -quiet && open '../DerivedData/Build/Products/Debug/Due This Week.app'",
     "zip": "cd build; zip -r ../build.zip * -x \"build/.*\" -x \"build/__MACOSX\"",
     "package": "npm run build && rm -f due-this-week-$npm_package_version.zip && cd build && zip -r -X ../due-this-week-$npm_package_version.zip . -x '.*' -x '__MACOSX/*'",
     "start": "node utils/webserver.js",

@@ -27,3 +27,7 @@ __pycache__/
 secrets.*.js
 *.secret.*
 *.secrets
+
+# Safari (Xcode) build output and per-user settings
+safari/DerivedData/
+safari/**/xcuserdata/
