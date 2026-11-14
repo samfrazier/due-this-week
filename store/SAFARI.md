@@ -9,6 +9,7 @@ Safari extensions ship inside a small Mac app. Ours lives in `safari/Due This We
 | Bundle ID (extension) | `io.github.samfrazier.duethisweek.Extension` |
 | Platform | macOS 12 or newer (iPhone/iPad later) |
 | Version | 1.1.0 (`MARKETING_VERSION` in the Xcode project) |
+| App Store | https://apps.apple.com/app/id6834720024 (App Store Connect app ID 6834720024) |
 | Category | Productivity |
 
 ## How the Xcode project gets the extension
@@ -112,5 +113,5 @@ No account, no data collection, no analytics, no remote code. Source: https://gi
 ```
 
 ## To do before the first Safari release
-- [ ] In Settings, the **Rate** button and logo link point to Edge Add-ons. Once the App Store link exists, show it in Safari instead (see `setStoreLinks()` in `src/pages/Options/index.ts`).
+- [x] In Settings, the **Rate** button and logo link go to the App Store in Safari (id6834720024) and to Edge Add-ons elsewhere (`src/pages/Options/storeLinks.ts`).
 - [ ] Add the App Store badge to the README and website once the app is live.

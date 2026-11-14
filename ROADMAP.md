@@ -77,6 +77,9 @@ Each new platform follows the Track A recipe: tester → fixtures and tests → 
 - **Languages.** Move UI text to `_locales/` so the extension can be translated (Spanish first).
 - **Feature ideas from upstream** worth considering: editing custom tasks (#148), a two-week view (#175), hiding specific courses (#156), tooltips on the rings (#143).
 
+## Ideas for a future update
+- **Remove the "View more" link** (owner's request, Nov 2026). Show every item instead of cutting the list at the default length, and let the collapsible **due Later** heading handle long lists. To decide when building: what happens to the *Default list length* setting, and the Completed and Announcements tabs (they use "View more" too).
+
 ## How we release
 1. Work on a branch, then open a PR. CI must pass.
 2. Bump the version in `package.json` and both manifests (semantic versioning: fixes → 1.0.x, features → 1.x.0).
