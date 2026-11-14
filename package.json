@@ -1,6 +1,6 @@
 {
   "name": "due-this-week",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Due This Week: a free, private to-do sidebar for Canvas LMS (fork of Tasks for Canvas by Jeff Cheng)",
   "homepage": "https://github.com/samfrazier/due-this-week",
   "license": "MIT",
