@@ -20,6 +20,12 @@ import { useNewCourseStore } from '../../hooks/useCourseStore';
 import { useExperiments } from '../../hooks/useExperiment';
 import { useNewAssignmentStore } from '../../hooks/useAssignmentStore';
 import { LMSConfig } from '../../types/config';
+import { AssignmentType } from '../../types';
+import StreakBanner from '../streak-banner/StreakBanner';
+import useStreak from '../../hooks/useStreak';
+import { countDueToday } from '../../utils/streak';
+import assignmentIsDone from '../../utils/assignmentIsDone';
+import { getListEnd } from '../../utils/getPeriod';
 
 export interface TaskContainerProps {
   assignments: FinalAssignment[];
@@ -80,9 +86,10 @@ function TaskContainer({
     setDelayLoad(false);
     let res = Object.values(assignmentStore.state);
     if (courseId) res = filterCourses([courseId], res);
+    // the list runs past the period (see getListEnd); the rings below don't
     return filterTimeBounds(
       startDate,
-      endDate,
+      getListEnd(startDate, endDate),
       res,
       true,
       options.show_long_overdue
@@ -148,6 +155,21 @@ function TaskContainer({
 
   const exp = useExperiments();
 
+  // the streak is always overall: not filtered by the selected course
+  const streak = useStreak(lms, options.show_streak);
+  const dueToday = useMemo(
+    () =>
+      countDueToday(
+        Object.values(assignmentStore.state).map((a) => ({
+          due_at: a.due_at,
+          done: assignmentIsDone(a),
+          is_custom: a.type === AssignmentType.NOTE,
+          needs_grading: !!a.needs_grading_count,
+        }))
+      ),
+    [assignmentStore.assignmentList]
+  );
+
   return (
     <DarkContext.Provider value={options.dark_mode}>
       <LMSContext.Provider value={lms}>
@@ -178,6 +200,14 @@ function TaskContainer({
               />
             ) : (
               <div style={{ height: '10px' }} />
+            )}
+            {streak && !loading && (
+              <StreakBanner
+                color={themeColor}
+                dark={options.dark_mode}
+                dueToday={dueToday}
+                streak={streak}
+              />
             )}
             <TaskList
               announcements={updatedAnnouncements}

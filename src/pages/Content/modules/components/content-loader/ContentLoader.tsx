@@ -4,6 +4,7 @@ import { AssignmentType, FinalAssignment, Options } from '../../types';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorRender from '../error/ErrorRender';
 import { LMSConfig } from '../../types/config';
+import { getListEnd } from '../../utils/getPeriod';
 
 interface ContentLoaderProps {
   clickable: boolean;
@@ -30,12 +31,17 @@ function ContentLoader({
   MIN_LOAD_TIME = 350,
   lms,
 }: ContentLoaderProps): JSX.Element {
+  // load a little past the period so the list can show "due Later" work
+  const listEnd = useMemo(
+    () => getListEnd(startDate, endDate),
+    [startDate, endDate]
+  );
   const {
     data: plannerData,
     isError: assignmentsError,
     isSuccess,
     errorMessage: assignmentsErrorMessage,
-  } = lms.useAssignments(startDate, endDate, options);
+  } = lms.useAssignments(startDate, listEnd, options);
   const {
     data: courseData,
     isError: coursesError,

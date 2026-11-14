@@ -169,7 +169,12 @@ export default function TaskForm({
         <FormItem>
           <FormTitle>
             {titleLabel}
-            <CheckIcon checkStyle="X" dark={darkMode} onClick={close} />
+            <CheckIcon
+              checkStyle="X"
+              dark={darkMode}
+              label="Close"
+              onClick={close}
+            />
           </FormTitle>
           <TextInput
             color={themeColor}

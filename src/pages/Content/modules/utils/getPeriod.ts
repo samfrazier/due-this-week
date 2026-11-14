@@ -131,3 +131,26 @@ export default function getPeriod(
 
   return { start: prevPeriodStart, end: nextPeriodStart };
 }
+
+// The Unfinished list also shows work due in the next LIST_LOOKAHEAD_DAYS
+// days (under "due Later"), even past the end of the selected period.
+export const LIST_LOOKAHEAD_DAYS = 14;
+
+/*
+  End date for loading and listing tasks. When the period being viewed is the
+  current one, extend it to cover the lookahead window; otherwise (past or
+  future periods) keep the period's own end. The progress rings always use the
+  period's own end.
+*/
+export function getListEnd(
+  start: Date,
+  end: Date,
+  now: Date = new Date(),
+  lookaheadDays = LIST_LOOKAHEAD_DAYS
+): Date {
+  if (now < start || now >= end) return end;
+  const lookahead = new Date(now);
+  lookahead.setDate(lookahead.getDate() + lookaheadDays + 1);
+  lookahead.setHours(0, 0, 0, 0);
+  return lookahead > end ? lookahead : end;
+}

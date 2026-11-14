@@ -5,6 +5,7 @@ import {
 } from './assignment';
 import Course from './course';
 import Options from './options';
+import { StreakItem } from '../utils/streak';
 
 export type SupportedLMS =
   | 'Canvas'
@@ -38,6 +39,9 @@ export interface LMSConfig {
     assignment: FinalAssignment
   ) => FinalAssignment; // update/delete assignments
   iconSet: IconSet;
+  // optional: past course work for the streak banner. Only LMSs we have
+  // verified implement this; the banner is hidden for the others.
+  loadStreakItems?: () => Promise<StreakItem[]>;
 }
 
 export interface UseAssignmentsHookInterface {

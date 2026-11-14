@@ -21,6 +21,8 @@ type Options = {
   clock_24hr: boolean;
   default_list_length: number;
   show_rings: boolean;
+  show_streak: boolean;
+  circle_check: boolean;
 };
 
 export default Options;

@@ -3,16 +3,16 @@ import assignmentHasGrade from '../../../utils/assignmentHasGrade';
 import getDaysLeft from './getDaysLeft';
 import { TaskTypeTab } from './useHeadings';
 
-function getDueDateHeadingLabel(delta: number): string {
-  let label = `${Math.floor(delta / 7)} weeks`;
+// Anything due this many days away or more goes under one "Later" heading.
+export const LATER_THRESHOLD_DAYS = 4;
+export const LATER_HEADING = 'Later';
 
-  if (delta < 0) label = 'Overdue';
-  else if (delta == 0) label = 'Today';
-  else if (delta == 1) label = 'Tomorrow';
-  else if (delta < 7) label = `${delta} days`;
-  else if (delta < 14) label = '1 week';
-
-  return label;
+export function getDueDateHeadingLabel(delta: number): string {
+  if (delta < 0) return 'Overdue';
+  if (delta === 0) return 'Today';
+  if (delta === 1) return 'Tomorrow';
+  if (delta < LATER_THRESHOLD_DAYS) return `${delta} days`;
+  return LATER_HEADING;
 }
 
 export function groupByDateHeadings(

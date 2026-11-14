@@ -20,6 +20,9 @@ import IconSubTabs from '../sub-tabs/IconSubTabs';
 import useOptions from '../../hooks/useOptions';
 import { THEME_COLOR } from '../../constants';
 import useCourseStore from '../../hooks/useCourseStore';
+import useCollapsedHeadings, {
+  headingKey,
+} from '../../hooks/useCollapsedHeadings';
 
 const ListContainer = styled.div`
   width: 100%;
@@ -106,22 +109,34 @@ const processRenderList = (
   selectedCourseId: string,
   viewingMore: boolean,
   showDateHeadings: boolean,
-  listLength: number
-) => {
+  listLength: number,
+  collapsed: Set<string>
+): [
+  (FinalAssignment | string)[],
+  FinalAssignment[],
+  Record<string, number>
+] => {
   const selected = useSelectedCourse(selectedCourseId, assignments);
   const filtered = filterByTab(tab, selected);
   const sorted = sortByTab(tab, filtered);
   const renderedTasks = cutAssignmentList(!viewingMore, listLength, sorted);
   const headings = useHeadings(tab, renderedTasks);
+  // counts come from the full list so a collapsed "due Later (8)" is accurate
+  // even when "View more" is hiding some of them
+  const allHeadings = useHeadings(tab, sorted);
+  const counts: Record<string, number> = {};
+  Object.keys(allHeadings).forEach((h) => (counts[h] = allHeadings[h].length));
   const allRendered = Object.keys(headings).reduce<
     (FinalAssignment | string)[]
   >((prev, curr) => {
-    let nxt = prev;
-    if (showDateHeadings && headings[curr].length > 0) nxt = nxt.concat(curr);
-    nxt = nxt.concat(headings[curr]);
-    return nxt;
+    if (headings[curr].length === 0) return prev;
+    if (!showDateHeadings) return prev.concat(headings[curr]);
+    const nxt = prev.concat(curr);
+    return collapsed.has(headingKey(tab, curr))
+      ? nxt
+      : nxt.concat(headings[curr]);
   }, []);
-  return [allRendered, sorted as FinalAssignment[]];
+  return [allRendered, sorted, counts];
 };
 
 /*
@@ -145,20 +160,22 @@ export default function TaskList({
   const [confetti, setConfetti] = useState(false);
   const [currentTab, setCurrentTab] = useState<TaskTypeTab>('Unfinished');
   const [viewingMore, setViewingMore] = useState(false);
+  const { collapsed, toggle: toggleHeading } = useCollapsedHeadings();
 
   const listLength = options.default_list_length;
 
-  const [unfinishedList, allUnfinishedList] = useMemo(
+  const [unfinishedList, allUnfinishedList, unfinishedCounts] = useMemo(
     () =>
       skeleton
-        ? [[], []]
+        ? [[], [], {}]
         : processRenderList(
             assignments,
             'Unfinished',
             selectedCourseId,
             viewingMore,
             showDateHeadings,
-            listLength
+            listLength,
+            collapsed
           ),
     [
       assignments,
@@ -167,20 +184,22 @@ export default function TaskList({
       viewingMore,
       showDateHeadings,
       listLength,
+      collapsed,
     ]
   );
 
-  const [completedList, allCompletedList] = useMemo(
+  const [completedList, allCompletedList, completedCounts] = useMemo(
     () =>
       skeleton
-        ? [[], []]
+        ? [[], [], {}]
         : processRenderList(
             assignments,
             'Completed',
             selectedCourseId,
             viewingMore,
             showDateHeadings,
-            listLength
+            listLength,
+            collapsed
           ),
     [
       assignments,
@@ -189,20 +208,22 @@ export default function TaskList({
       viewingMore,
       showDateHeadings,
       listLength,
+      collapsed,
     ]
   );
 
-  const [gradingList, allGradingList] = useMemo(
+  const [gradingList, allGradingList, gradingCounts] = useMemo(
     () =>
       skeleton
-        ? [[], []]
+        ? [[], [], {}]
         : processRenderList(
             assignments,
             'NeedsGrading',
             selectedCourseId,
             viewingMore,
             showDateHeadings,
-            listLength
+            listLength,
+            collapsed
           ),
     [
       assignments,
@@ -211,20 +232,22 @@ export default function TaskList({
       viewingMore,
       showDateHeadings,
       listLength,
+      collapsed,
     ]
   );
 
-  const [announcementList, allAnnouncementList] = useMemo(
+  const [announcementList, allAnnouncementList, announcementCounts] = useMemo(
     () =>
       skeleton
-        ? [[], []]
+        ? [[], [], {}]
         : processRenderList(
             announcements,
             'Announcements',
             selectedCourseId,
             viewingMore,
             showDateHeadings,
-            listLength
+            listLength,
+            collapsed
           ),
     [
       announcements,
@@ -233,6 +256,7 @@ export default function TaskList({
       viewingMore,
       showDateHeadings,
       listLength,
+      collapsed,
     ]
   );
 
@@ -293,6 +317,7 @@ export default function TaskList({
     return tab !== 'Announcements' ? (
       <TaskCard
         assignment={assignment}
+        circleCheck={options.circle_check}
         clock24hr={options.clock_24hr}
         color={courseStore.state[assignment.course_id].color}
         complete={assignmentIsDone(assignment)}
@@ -336,13 +361,30 @@ export default function TaskList({
     state: TransitionState;
   }
 
-  const headingToComponent = ({
-    key,
-    data: heading,
-    state,
-  }: HeadingTransitionProps) => (
-    <HeadingGroup heading={heading} key={key} transitionState={state} />
-  );
+  const headingCounts: Record<TaskTypeTab, Record<string, number>> = {
+    Unfinished: unfinishedCounts as Record<string, number>,
+    Completed: completedCounts as Record<string, number>,
+    NeedsGrading: gradingCounts as Record<string, number>,
+    Announcements: announcementCounts as Record<string, number>,
+  };
+
+  const headingToComponent = (
+    tab: TaskTypeTab,
+    { key, data: heading, state }: HeadingTransitionProps
+  ) => {
+    const hKey = headingKey(tab, heading);
+    return (
+      <HeadingGroup
+        collapsed={collapsed.has(hKey)}
+        count={headingCounts[tab][heading]}
+        heading={heading}
+        key={key}
+        onToggle={toggleHeading}
+        toggleKey={hKey}
+        transitionState={state}
+      />
+    );
+  };
 
   function dataToComponentFunc(tab: TaskTypeTab) {
     return ({
@@ -355,7 +397,7 @@ export default function TaskList({
       state: TransitionState;
     }) => {
       if (typeof data === 'string')
-        return headingToComponent({
+        return headingToComponent(tab, {
           key,
           data,
           state,

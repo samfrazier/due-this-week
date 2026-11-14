@@ -71,6 +71,8 @@ export default function AnnouncementCard({
             <CheckIcon
               checkStyle="Check"
               dark={darkMode}
+              label="Mark as read"
+              name={assignment.name}
               onClick={markAssignmentAsComplete}
             />
           ) : (
