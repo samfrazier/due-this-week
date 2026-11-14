@@ -6,16 +6,28 @@ interface CheckIconProps {
   dark?: boolean;
   onClick: () => void;
   checkStyle: 'Check' | 'Revert' | 'X';
+  name?: string; // the assignment's name, for screen readers
+  label?: string; // overrides the default tooltip/label (e.g. "Close")
 }
 
-const CheckIconWrapper = styled.div<DarkProps>`
+const CheckIconWrapper = styled.button<DarkProps>`
   width: 16px;
   height: 16px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
   border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover {
+  cursor: pointer;
+  &:focus-visible {
+    outline: 2px solid #6c757c;
+    outline-offset: 1px;
+  }
+  &:hover,
+  &:focus-visible {
     svg {
       cursor: pointer;
       fill: ${(props) =>
@@ -83,6 +95,8 @@ function CheckIcon({
   dark,
   onClick,
   checkStyle,
+  name,
+  label,
 }: CheckIconProps): React.ReactElement {
   type CheckStyleTooltips = { [K in CheckIconProps['checkStyle']]: string };
   const checkStyleTooltips: CheckStyleTooltips = {
@@ -90,11 +104,14 @@ function CheckIcon({
     Revert: 'Mark as Incomplete',
     X: 'Delete',
   };
+  const tooltip = label || checkStyleTooltips[checkStyle];
   return (
     <CheckIconWrapper
+      aria-label={name ? `${tooltip}: ${name}` : tooltip}
       dark={dark}
       onClick={onClick}
-      title={checkStyleTooltips[checkStyle]}
+      title={tooltip}
+      type="button"
     >
       {checkStyle === 'Check' ? Check : checkStyle === 'Revert' ? Revert : X}
     </CheckIconWrapper>

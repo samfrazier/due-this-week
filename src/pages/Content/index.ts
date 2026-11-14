@@ -16,6 +16,7 @@ import {
   BrightspaceEntrypoint,
   isBrightspace,
 } from './modules/plugins/brightspace';
+import { BRIGHTSPACE_ENABLED } from './modules/constants';
 
 /* 
 
@@ -47,7 +48,7 @@ if (CanvasLMSConfig.isActive) {
   console.log('Due This Week: Blackboard detected');
 
   BlackboardEntrypoint();
-} else if (isBrightspace) {
+} else if (BRIGHTSPACE_ENABLED && isBrightspace) {
   console.log('Due This Week: Brightspace detected');
 
   BrightspaceEntrypoint();

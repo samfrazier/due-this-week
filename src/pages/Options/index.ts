@@ -211,6 +211,8 @@ const booleanOptions: Record<string, string> = {
   'long-overdue': 'show_long_overdue',
   'clock-24hr': 'clock_24hr',
   'show-rings': 'show_rings',
+  'show-streak': 'show_streak',
+  'circle-check': 'circle_check',
   GSCOPE_INT_disabled: 'GSCOPE_INT_disabled',
 };
 
@@ -337,6 +339,8 @@ chrome.storage.sync.get(storedUserOptions, (items) => {
   setCheckbox('due-date-headings', options.due_date_headings);
   // setCheckbox('show-locked-assignments', options.show_locked_assignments);
   setCheckbox('show-confetti', options.show_confetti);
+  setCheckbox('show-streak', options.show_streak);
+  setCheckbox('circle-check', options.circle_check);
   setCheckbox('show-needs-grading', options.show_needs_grading);
   setCheckbox(
     'custom-theme-color',

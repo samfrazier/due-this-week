@@ -7,6 +7,7 @@ import fmtDate, { fmtDateSince } from './utils/fmtDate';
 import { DarkProps } from '../../types/props';
 import { DarkContext, LMSContext } from '../../contexts/contexts';
 import assignmentHasGrade from '../../utils/assignmentHasGrade';
+import CircleCheck from './CircleCheck';
 
 export interface AnimatedProps {
   static?: boolean;
@@ -95,6 +96,14 @@ export const TaskContainer = styled.div.attrs(
       cursor: pointer;
     }
   `,
+  CircleSlot = styled.div`
+    width: 28px;
+    padding-right: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `,
   CourseCodeText = styled.div`
     color: ${(props) => props.color};
     font-weight: 700;
@@ -159,6 +168,7 @@ export interface TaskProps {
   skeleton?: boolean;
   transitionState?: TransitionState;
   clock24hr?: boolean;
+  circleCheck?: boolean;
 }
 
 export interface TransitionState {
@@ -188,6 +198,7 @@ export default function TaskCard({
   skeleton,
   transitionState,
   clock24hr = false,
+  circleCheck = false,
 }: TaskProps): JSX.Element {
   const lms = useContext(LMSContext);
   const [due_date, due_time] = fmtDate(assignment.due_at, clock24hr);
@@ -272,10 +283,11 @@ export default function TaskCard({
           <CourseCodeText color={color}>
             {!skeleton ? course_name : <SkeletonCourseCode dark={darkMode} />}
           </CourseCodeText>
-          {!skeleton && !is_instructor ? ( // assignments that need grading should not be marked manually
+          {!skeleton && !is_instructor && !circleCheck ? ( // assignments that need grading should not be marked manually
             <CheckIcon
               checkStyle={complete ? 'Revert' : 'Check'}
               dark={darkMode}
+              name={assignment.name}
               onClick={markAssignmentAsComplete}
             />
           ) : (
@@ -285,6 +297,7 @@ export default function TaskCard({
             <CheckIcon
               checkStyle="X"
               dark={darkMode}
+              name={assignment.name}
               onClick={markAssignmentAsDeleted}
             />
           ) : (
@@ -327,6 +340,18 @@ export default function TaskCard({
           )}
         </TaskDetailsText>
       </TaskInfo>
+      {!skeleton && !is_instructor && circleCheck && (
+        <CircleSlot>
+          {(transitionState ? transitionState.height >= 40 : true) && (
+            <CircleCheck
+              color={color || '#6c757c'}
+              complete={complete}
+              name={assignment.name}
+              onToggle={markAssignmentAsComplete}
+            />
+          )}
+        </CircleSlot>
+      )}
     </TaskContainer>
   );
 }

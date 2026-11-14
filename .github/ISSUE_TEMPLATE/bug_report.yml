@@ -15,7 +15,6 @@ body:
       options:
         - Canvas LMS
         - Blackboard
-        - D2L Brightspace
         - Gradescope
         - Other / not sure
     validations:

@@ -4,6 +4,10 @@ import JSONOptionsDefaults from './defaults/optionsDefaults.json';
 
 export const MAX_MARKED_ASSIGNMENTS = 400;
 
+// D2L Brightspace support is paused until a tester confirms it works.
+// The code is kept in plugins/brightspace; set this to true to turn it back on.
+export const BRIGHTSPACE_ENABLED = false;
+
 export const AssignmentDefaults = JSONAssignmentDefaults as FinalAssignment;
 export const OptionsDefaults = JSONOptionsDefaults as Options;
 

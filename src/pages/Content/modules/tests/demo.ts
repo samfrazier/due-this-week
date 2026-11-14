@@ -10,7 +10,9 @@ import { MissingAssignment } from '../types/assignment';
 const days = [];
 for (let i = 1; i < 7; i++) {
   const day = new Date();
-  day.setDate(day.getDate() + 1 + Math.floor(4 * Math.random()));
+  // days[0..3]: 1-4 days out; days[4] and days[5]: 6 and 10 days out ("due Later")
+  const offset = i <= 4 ? 1 + Math.floor(4 * Math.random()) : 6 + (i - 5) * 4;
+  day.setDate(day.getDate() + offset);
   day.setHours(8, 30, 0);
   days.push(day.toISOString());
 }

@@ -12,7 +12,7 @@ Requirements were checked against Microsoft's "Publish a Microsoft Edge extensio
 ---
 
 ## 1. Package
-Upload **`due-this-week-1.0.0.zip`**, made with `npm run package`. It's built from a clean `npm run build`, with `manifest.json` at the root of the zip.
+Upload **`due-this-week-<version>.zip`** (for example `due-this-week-1.1.0.zip`), made with `npm run package`. It's built from a clean `npm run build`, with `manifest.json` at the root of the zip.
 
 ## 2. Availability
 - **Visibility:** `Hidden` for the first submission. You can check the live listing through its URL, then switch to `Public`. (Or choose `Public` right away.)
@@ -29,7 +29,7 @@ Upload **`due-this-week-1.0.0.zip`**, made with `npm run package`. It's built fr
 ## 4. Privacy
 
 **Single purpose description**
-> Shows students and teachers a weekly to-do list and progress chart of their course assignments in the sidebar of their school's learning management system dashboard (Canvas LMS, Blackboard, or D2L Brightspace).
+> Shows students and teachers a weekly to-do list and progress chart of their course assignments in the sidebar of their school's learning management system dashboard (Canvas LMS or Blackboard).
 
 **Permission justification**
 
@@ -37,7 +37,7 @@ Upload **`due-this-week-1.0.0.zip`**, made with `npm run package`. It's built fr
 > Saves the user's display settings (week start day, time period, theme color, which panels to show) and, if the optional Gradescope integration is used, a local cache of Gradescope assignments so they can be shown on the dashboard. No data is sent anywhere.
 
 Host permission / content script on `https://*/*`
-> Schools host their learning management systems on their own custom domains (for example canvas.myschool.edu or learn.school.edu), so the extension can't list them in advance. The content script runs on https pages only to check whether the page is a supported LMS dashboard (Canvas, Blackboard, D2L Brightspace, or Gradescope). On any other site it does nothing else and stops right away. On a supported LMS it calls that same site's API with the user's existing session to read their assignments and to save "mark complete" and custom tasks back to their own account. It never sends data to the developer or any third party, and it injects no styles into non-LMS pages.
+> Schools host their learning management systems on their own custom domains (for example canvas.myschool.edu or learn.school.edu), so the extension can't list them in advance. The content script runs on https pages only to check whether the page is a supported LMS dashboard (Canvas, Blackboard, or Gradescope). On any other site it does nothing else and stops right away. On a supported LMS it calls that same site's API with the user's existing session to read their assignments and to save "mark complete" and custom tasks back to their own account. It never sends data to the developer or any third party, and it injects no styles into non-LMS pages.
 
 **Are you using remote code?**
 > **No, I am not using remote code.** All JavaScript is bundled in the package (Manifest V3). It loads no remote scripts, fonts, or configuration.
@@ -54,16 +54,18 @@ Host permission / content script on `https://*/*`
 
 **Extension name** and **short description** come from `manifest.json` automatically:
 - Name: *Due This Week: To-Do Sidebar for Canvas LMS*
-- Short description: *Free, private weekly to-do sidebar for Canvas, Blackboard, and D2L Brightspace. Unofficial; not affiliated with Instructure.*
+- Short description: *Free, private weekly to-do sidebar for Canvas and Blackboard. Unofficial; not affiliated with Instructure.*
 
 **Description** (must be 250+ characters; this one is about 1,900)
 ```
-Due This Week adds a clean weekly to-do list and progress chart to your school dashboard, so you can see everything due this week at a glance. It works with Canvas LMS, Blackboard, and D2L Brightspace.
+Due This Week adds a clean weekly to-do list and progress chart to your school dashboard, so you can see everything due this week at a glance. It works with Canvas LMS and Blackboard.
 
 WHAT YOU GET
 • A to-do list built from your real assignments, quizzes, discussions, and due dates
 • Progress rings for each course, in your own dashboard colors
-• Mark items complete, or add your own custom tasks (with optional links and weekly repeats)
+• Check items off with one click, or add your own custom tasks (with optional links and weekly repeats)
+• A streak that counts the days since you last missed an assignment (Canvas), so you can keep it going
+• A "due Later" section for work due in the next two weeks, and headings you can collapse
 • Day, three-day, week, or month views, plus a "rolling" view that starts today
 • Overdue and missing work, so nothing slips through the cracks
 • Optional Gradescope integration that adds your Gradescope assignments to the list
@@ -78,7 +80,7 @@ PRIVATE BY DESIGN
 
 HOW TO USE
 1. Install the extension.
-2. Open your Canvas (or Blackboard or Brightspace) dashboard.
+2. Open your Canvas (or Blackboard) dashboard.
 3. Your weekly to-do list appears in the right sidebar. Click the gear icon to change settings.
 
 Want to try it first? Open the live demo with sample data:
@@ -86,19 +88,20 @@ https://samfrazier.github.io/due-this-week/demo.html
 
 Due This Week is a free, open-source fork of the "Tasks for Canvas" extension by Jeff Cheng (MIT License), with tracking removed and updated for Microsoft Edge.
 
-Due This Week is an unofficial extension and is not affiliated with, endorsed by, or sponsored by Instructure (Canvas), Anthology (Blackboard), D2L, or Gradescope. Canvas is a trademark of Instructure, Inc.
+Due This Week is an unofficial extension and is not affiliated with, endorsed by, or sponsored by Instructure (Canvas), Anthology (Blackboard), or Gradescope. Canvas is a trademark of Instructure, Inc.
 
 Source code and support: https://github.com/samfrazier/due-this-week
 ```
 
 **Extension logo:** `store/logo-300.png` (300×300)
 
-**Screenshots** (optional, up to 6, **1280×800** or 640×480). Ready in `store/screenshots/`, all 1280×800 with sample data only, so no real student information appears. Upload them in this order:
-1. `1-dashboard.png`: the sidebar on a Canvas-style dashboard
-2. `2-sidebar-closeup.png`: progress rings and upcoming assignments, up close
+**Screenshots** (optional, up to 6, **1280×800** or 640×480). Ready in `store/screenshots/`, all 1280×800 with sample data only, so no real student information appears. Upload them in this order (for an update, delete the old ones in Partner Center first):
+1. `1-dashboard.png`: the sidebar on a Canvas-style dashboard, with the streak banner
+2. `2-sidebar-closeup.png`: streak, circle check buttons, and the "due Later" heading, up close
 3. `3-new-task.png`: adding a custom task (date, link, weekly repeat, course)
 4. `4-completed.png`: the Completed tab
-5. `5-settings.png`: the Settings page
+5. `5-settings.png`: Settings, including the new "Show streak" and "Use circle check buttons" options
+6. `6-dark-mode.png`: the sidebar in dark mode
 
 These were made by rendering the real built extension code (demo mode, default settings) in headless Microsoft Edge.
 
@@ -110,10 +113,28 @@ assignments
 student planner
 homework tracker
 blackboard
-brightspace
+study planner
 ```
 
 ## Updates: notes for certification
+
+### 1.1.0
+```
+Update 1.0.1 → 1.1.0: new sidebar features. No new permissions.
+
+New:
+- Round "check off" buttons on each task card (the previous icon remains available in Settings).
+- A streak banner on Canvas: the number of days since the student last missed an assignment. It is computed locally in the browser from the student's own Canvas planner (same school site and same API the sidebar already uses). Nothing is sent to the developer or any third party. It can be turned off in Settings ("Show streak").
+- A "due Later" heading, and the to-do list now also shows work due in the next two weeks.
+- Task-list headings can be collapsed; the collapsed state is saved in chrome.storage.local on the device.
+
+Changed:
+- D2L Brightspace support is paused: removed from the description and the sidebar no longer runs on D2L pages.
+
+Permissions are unchanged ("storage" only). No remote code, analytics, or external requests.
+
+To test: open https://samfrazier.github.io/due-this-week/demo.html with the extension installed. The demo shows a sample 12-day streak, round check buttons, and a "due Later" heading; click a heading to collapse it. The new options are at the toolbar icon → Settings ("Show streak", "Use circle check buttons").
+```
 
 ### 1.0.1
 ```

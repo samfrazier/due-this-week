@@ -4,9 +4,9 @@
 
 **A free, private to-do sidebar for Canvas LMS, built for Microsoft Edge.**
 
-Ever had trouble finding your weekly assignments? Due This Week adds a clean to-do list and progress chart to your Canvas dashboard, so you can see everything due this week at a glance. It also works with Blackboard and D2L Brightspace.
+Ever had trouble finding your weekly assignments? Due This Week adds a clean to-do list and progress chart to your Canvas dashboard, so you can see everything due this week at a glance. It also works with Blackboard.
 
-> **Unofficial.** Due This Week is not affiliated with, endorsed by, or sponsored by Instructure, Inc. (Canvas), Anthology (Blackboard), or D2L. "Canvas" is a trademark of Instructure, Inc.
+> **Unofficial.** Due This Week is not affiliated with, endorsed by, or sponsored by Instructure, Inc. (Canvas), or Anthology (Blackboard). "Canvas" is a trademark of Instructure, Inc.
 
 ## Privacy
 - **No accounts, no tracking, no analytics.**
@@ -36,6 +36,12 @@ Progress bars for each course show how much of this week's work you've finished.
 Task items and progress bars follow your Canvas dashboard colors and course order. You can add your own custom tasks too.
 
 ![](screenshots/Screenshot3.png)
+
+### New in 1.1
+- **Circle check buttons:** click the circle on any card to check it off (or switch back to the classic icon in Settings).
+- **Streak (Canvas):** counts the days in a row since you last missed an assignment. Only *missing* work breaks it; late, excused, and checked-off items don't. Computed in your browser.
+- **Due later:** work due 4 or more days out is grouped under one heading, and the list looks up to two weeks ahead.
+- **Collapsible headings:** click a heading to hide or show that group.
 
 ### Notes
 - The sidebar works on the Canvas dashboard in Card View, List View, and Recent Activity.
