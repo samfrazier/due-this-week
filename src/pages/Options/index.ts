@@ -1,6 +1,7 @@
 import { OptionsDefaults } from '../Content/modules/constants';
 import Options from '../Content/modules/types/options';
 import './index.css';
+import { detectStore } from './storeLinks';
 
 const storedUserOptions = Object.keys(OptionsDefaults);
 
@@ -11,15 +12,19 @@ function applyDefaults(options: Options): Options {
   };
 }
 
-/* Set the logo and title link to the extension's store listing.
- * If we publish to Chrome/Firefox later, pick the store URL by browser here. */
+/* Point the logo, title, and "Rate" button at the store this copy came from
+ * (Edge Add-ons or the Mac App Store). Add Chrome/Firefox in storeLinks.ts. */
 function setStoreLinks() {
-  const storeURL =
-    'https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc';
+  const store = detectStore(window.location.protocol, navigator.userAgent);
 
   Array.from(document.getElementsByTagName('a')).forEach((elem) => {
-    if (elem.className === 'store-link') elem.href = storeURL;
+    if (elem.className === 'store-link') elem.href = store.url;
   });
+  const rate = document.getElementById('rate-link') as HTMLAnchorElement;
+  if (rate) {
+    rate.href = store.rateURL;
+    rate.textContent = store.rateLabel;
+  }
 }
 
 function createDropdownOption(label: string, cb: () => void): HTMLElement {
