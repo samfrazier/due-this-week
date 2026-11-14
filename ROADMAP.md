@@ -18,7 +18,7 @@ Any feature that would break one of these promises is out of scope.
 | Microsoft Edge | ✅ [Published on Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc) |
 | Canvas LMS | ✅ Tested on a real account (Card View dashboard); 262 automated tests |
 | Blackboard | ⚠️ Code inherited from upstream (Jan 2025), **untested here, 0 tests**. Upstream issues #154 and #170 report it "failed to load". |
-| D2L Brightspace | ⚠️ Code inherited from upstream, **untested here, 0 tests** |
+| D2L Brightspace | ⏸️ **Paused (Nov 2026).** Switched off (`BRIGHTSPACE_ENABLED = false`) and removed from the supported list until we find a D2L tester. The upstream code is kept. |
 | Gradescope (add-on to Canvas) | ⚠️ Inherited, untested here |
 | Automated checks on GitHub | ⚠️ The workflow is updated, but **Actions must be turned on** in the repo once |
 
@@ -36,6 +36,7 @@ Any feature that would break one of these promises is out of scope.
 ---
 
 ## Track A: verify Blackboard and D2L (v1.1)
+> **D2L is paused** until a tester is found: no D2L work until then. Blackboard continues.
 Goal: move them from ⚠️ to ✅ honestly. Blackboard and D2L generally need a school account, so we need help.
 
 1. **Find testers.** Ask friends or classmates at Blackboard and D2L schools, and post in student communities. The bug form already asks which LMS people use.
