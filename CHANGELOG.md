@@ -10,6 +10,7 @@ All notable changes to Due This Week. Versions follow [semantic versioning](http
 - **Collapsible headings.** Click any heading to hide or show its group; a collapsed heading shows its count, e.g. *due Later (5)*. Remembered per device.
 
 ### Changed
+- **Shorter name:** *Due This Week: To-do Sidebar* (was *Due This Week: To-Do Sidebar for Canvas LMS*), because Safari allows at most 40 characters.
 - **D2L Brightspace is paused.** It's no longer listed as supported and the sidebar no longer appears on D2L until a tester can confirm it works.
 - The classic check icon and the New Task close button are now real buttons, so they work with the keyboard and screen readers.
 

@@ -53,7 +53,7 @@ Host permission / content script on `https://*/*`
 ## 5. Store listing (English)
 
 **Extension name** and **short description** come from `manifest.json` automatically:
-- Name: *Due This Week: To-Do Sidebar for Canvas LMS*
+- Name: *Due This Week: To-do Sidebar* (Safari limits names to 40 characters, so it was shortened in 1.1.0 from "Due This Week: To-Do Sidebar for Canvas LMS")
 - Short description: *Free, private weekly to-do sidebar for Canvas and Blackboard. Unofficial; not affiliated with Instructure.*
 
 **Description** (must be 250+ characters; this one is about 1,900)
@@ -129,6 +129,7 @@ New:
 - Task-list headings can be collapsed; the collapsed state is saved in chrome.storage.local on the device.
 
 Changed:
+- Extension name shortened to "Due This Week: To-do Sidebar" (Safari requires 40 characters or fewer).
 - D2L Brightspace support is paused: removed from the description and the sidebar no longer runs on D2L pages.
 
 Permissions are unchanged ("storage" only). No remote code, analytics, or external requests.
