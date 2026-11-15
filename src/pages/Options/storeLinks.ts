@@ -2,7 +2,7 @@
    the right listing (logo, title, and the "Rate" button). */
 
 export interface StoreInfo {
-  name: 'edge' | 'safari' | 'chrome';
+  name: 'edge' | 'safari' | 'chrome' | 'firefox';
   url: string; // the listing
   rateURL: string; // where to leave a rating
   rateLabel: string;
@@ -31,12 +31,23 @@ export const CHROME_STORE: StoreInfo = {
   rateLabel: 'Rate on the Chrome Web Store',
 };
 
-/* Safari extension pages use the safari-web-extension: scheme. Edge says
+// The slug ("due-this-week") is chosen when the add-on is first submitted.
+export const FIREFOX_STORE: StoreInfo = {
+  name: 'firefox',
+  url: 'https://addons.mozilla.org/firefox/addon/due-this-week/',
+  rateURL: 'https://addons.mozilla.org/firefox/addon/due-this-week/reviews/',
+  rateLabel: 'Rate on Firefox Add-ons',
+};
+
+/* Safari extension pages use the safari-web-extension: scheme and Firefox's
+   use moz-extension:. Edge says
    "Edg/" in its user agent; other Chromium browsers (Chrome, Brave, Opera,
    Vivaldi) install from the Chrome Web Store. The Safari user-agent check is
    a fallback (Chrome and Edge also say "Safari" in theirs). */
 export function detectStore(protocol: string, userAgent: string): StoreInfo {
   if (protocol === 'safari-web-extension:') return SAFARI_STORE;
+  if (protocol === 'moz-extension:' || /Firefox\//.test(userAgent))
+    return FIREFOX_STORE;
   if (/Edg\//.test(userAgent)) return EDGE_STORE;
   if (/(Chrome|Chromium|CriOS)\//.test(userAgent)) return CHROME_STORE;
   if (/Safari\//.test(userAgent)) return SAFARI_STORE;
