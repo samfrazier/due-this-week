@@ -83,6 +83,28 @@ code {
   color: #fff;
 }
 
+.stores {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.store-button.soon {
+  background: transparent;
+  color: var(--muted);
+  border: 2px dashed var(--muted);
+  padding: 10px 20px;
+  cursor: default;
+}
+
+.store-button small {
+  font-weight: 400;
+  margin-left: 4px;
+}
+
 footer {
   margin-top: 48px;
   font-size: 14px;

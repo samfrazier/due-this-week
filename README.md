@@ -2,7 +2,7 @@
 
 # Due This Week
 
-**A free, private to-do sidebar for Canvas LMS, built for Microsoft Edge.**
+**A free, private to-do sidebar for Canvas and Blackboard. Built for everyone, in every browser.**
 
 Ever had trouble finding your weekly assignments? Due This Week adds a clean to-do list and progress chart to your Canvas dashboard, so you can see everything due this week at a glance. It also works with Blackboard.
 
@@ -14,9 +14,16 @@ Ever had trouble finding your weekly assignments? Due This Week adds a clean to-
 - Settings are saved in your browser's extension storage.
 
 ## Download
-[![Get it from Microsoft Edge Add-ons](https://img.shields.io/badge/Get_it_from-Microsoft_Edge_Add--ons-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc)
+Due This Week is free in every major browser:
 
-**[Install Due This Week from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc)**. It's free. Want to look first? Try the [live demo](https://samfrazier.github.io/due-this-week/demo.html) with sample data.
+| Browser | Get it |
+|---|---|
+| **Microsoft Edge** | [![Get it from Microsoft Edge Add-ons](https://img.shields.io/badge/Get_it_from-Microsoft_Edge_Add--ons-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc) |
+| **Google Chrome** (also Brave, Opera, Vivaldi) | Chrome Web Store: *in review, coming soon* |
+| **Mozilla Firefox** | Firefox Add-ons: *in review, coming soon* |
+| **Safari** (Mac) | Mac App Store: *in review, coming soon* |
+
+Want to look first? Try the [live demo](https://samfrazier.github.io/due-this-week/demo.html) with sample data.
 
 Developers can also [install it from source](#installing-and-running-for-development).
 
@@ -59,6 +66,7 @@ Task items and progress bars follow your Canvas dashboard colors and course orde
 5. **Edge:** go to `edge://extensions`, turn on **Developer mode**, click **Load unpacked**, and select the `build` folder.
    **Chrome:** same steps at `chrome://extensions`.
    **Firefox:** run `npm run firefox`, go to `about:debugging` → **This Firefox** → **Load Temporary Add-on**, and choose `build/manifest.json`.
+   **Safari (Mac):** run `npm run safari` (needs Xcode). In Safari, turn on **Develop → Allow Unsigned Extensions**, then enable Due This Week in **Settings → Extensions**.
 6. Run `npm test` to run the test suite.
 
 To regenerate the icons after changing the design, run `python3 utils/make-icons.py`.
@@ -72,7 +80,7 @@ Changes in this fork:
 - Removed the remote A/B-testing config, the per-user client ID, and the install/uninstall tracking URLs
 - New name and icon, and support links now go to this repo
 - System fonts instead of Google Fonts, so the extension pages load nothing from other servers
-- Packaged for Microsoft Edge Add-ons
+- Packaged for Microsoft Edge, Google Chrome, Mozilla Firefox, and Safari
 
 Originally built with [Chrome Extension Boilerplate with React 17 and Webpack 5](https://github.com/lxieyang/chrome-extension-boilerplate-react.git).
 
