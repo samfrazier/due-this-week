@@ -2,7 +2,7 @@
 
 # Due This Week
 
-**A free, private to-do sidebar for Canvas LMS. Built for everyone, in every browser.**
+**A free, private to-do sidebar for Canvas and Blackboard. Built for everyone, in every browser.**
 
 Ever had trouble finding your weekly assignments? Due This Week adds a clean to-do list and progress chart to your Canvas dashboard, so you can see everything due this week at a glance. It also works with Blackboard.
 
