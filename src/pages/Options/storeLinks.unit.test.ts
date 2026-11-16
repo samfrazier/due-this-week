@@ -2,6 +2,7 @@ import {
   CHROME_STORE,
   detectStore,
   EDGE_STORE,
+  FIREFOX_STORE,
   SAFARI_STORE,
 } from './storeLinks';
 
@@ -37,4 +38,13 @@ test('App Store links use the app id', () => {
   expect(SAFARI_STORE.url).toBe('https://apps.apple.com/app/id6834720024');
   expect(SAFARI_STORE.rateURL).toContain('action=write-review');
   expect(SAFARI_STORE.rateLabel).toBe('Rate on the App Store');
+});
+
+const FIREFOX_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:154.0) Gecko/20100101 Firefox/154.0';
+
+test('Firefox links to Firefox Add-ons', () => {
+  expect(detectStore('moz-extension:', FIREFOX_UA)).toBe(FIREFOX_STORE);
+  expect(detectStore('moz-extension:', '')).toBe(FIREFOX_STORE);
+  expect(FIREFOX_STORE.rateLabel).toBe('Rate on Firefox Add-ons');
 });
