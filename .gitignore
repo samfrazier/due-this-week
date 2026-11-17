@@ -32,3 +32,6 @@ secrets.*.js
 safari/DerivedData/
 safari/**/xcuserdata/
 safari/**/xcshareddata/xcodecloud/
+
+# Personal planning notes (kept locally, not in the repo)
+ROADMAP.md
