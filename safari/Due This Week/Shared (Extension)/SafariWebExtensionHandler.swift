@@ -1,8 +1,8 @@
 //
 //  SafariWebExtensionHandler.swift
-//  Due This Week Extension
+//  Shared (Extension)
 //
-//  Created by Samual Frazier on 11/14/26.
+//  Created by Samual Frazier on 11/18/26.
 //
 
 import SafariServices
