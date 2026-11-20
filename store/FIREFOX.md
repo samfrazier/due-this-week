@@ -6,7 +6,7 @@ Developer Hub: https://addons.mozilla.org/developers/ (free; sign in with a Mozi
 |---|---|
 | Add-on ID | `due-this-week@samfrazier.github.io` (in `src/manifest-firefox.json`) |
 | Manifest | V3, Firefox 140+ (Android 142+) |
-| Store URL | https://addons.mozilla.org/firefox/addon/due-this-week/ (slug chosen at submission) |
+| Store URL | https://addons.mozilla.org/firefox/addon/due-this-week/ (live since 1.1.0, Nov 19, 2026) |
 
 ## Files to build
 ```bash
