@@ -2,6 +2,7 @@ import { CanvasLMSConfig } from '.';
 import runApp from '../..';
 import { getOptions } from '../../hooks/useOptions';
 import { Options } from '../../types';
+import { keepTasksFirstOnPhones } from './utils/tasksFirstOnPhones';
 
 /* Standardizes school-specific CSS class choices so the sidebar works/looks right. */
 function prepareCanvasStyles() {
@@ -16,6 +17,8 @@ function runAppUsingOptions(container: HTMLElement, data: Options) {
   const newContainer = document.createElement('div');
   newContainer.id = 'tfc-wall-rose';
   (container.parentNode as Node).insertBefore(newContainer, container);
+  /* On phones Canvas puts this column under the course cards; show tasks first. */
+  keepTasksFirstOnPhones(newContainer, container);
   /*
       only visually hide sidebar to prevent issues with DOM modification
     */

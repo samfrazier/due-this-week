@@ -2,6 +2,13 @@
 
 All notable changes to Due This Week. Versions follow [semantic versioning](https://semver.org/): fixes are 1.0.x, new features are 1.x.0.
 
+## Unreleased (planned 1.2.0)
+### Added
+- **iPhone and iPad (Safari).** The Safari app now runs on iPhone and iPad as well as Mac, from one Xcode project with the same App Store listing. Safari asks once per site before the extension can run on your school's Canvas.
+
+### Changed
+- **Tasks first on phones.** When Canvas stacks its columns on a narrow screen (phones, iPad in portrait), the sidebar moves above the course cards so your to-do list is the first thing you see. On wider screens it stays beside them.
+
 ## 1.1.0 (November 2026)
 ### Added
 - **Circle check buttons.** Click the circle in the course color on any card to check it off; click it again on the Completed tab to undo. The classic icon is still available in Settings (*Use circle check buttons*).

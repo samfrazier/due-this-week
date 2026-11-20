@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Due This Week
+//  macOS (App)
 //
-//  Created by Samual Frazier on 11/14/26.
+//  Created by Samual Frazier on 11/18/26.
 //
 
 import Cocoa
