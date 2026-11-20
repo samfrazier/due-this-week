@@ -20,7 +20,7 @@ Due This Week is free in every major browser:
 |---|---|
 | **Microsoft Edge** | [![Get it from Microsoft Edge Add-ons](https://img.shields.io/badge/Get_it_from-Microsoft_Edge_Add--ons-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc) |
 | **Google Chrome** (also Brave, Opera, Vivaldi) | Chrome Web Store: *in review, coming soon* |
-| **Mozilla Firefox** | Firefox Add-ons: *in review, coming soon* |
+| **Mozilla Firefox** (desktop and Android) | [![Get the add-on for Firefox](https://img.shields.io/badge/Get_the_add--on-Firefox_Add--ons-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/firefox/addon/due-this-week/) |
 | **Safari** (Mac) | Mac App Store: *in review, coming soon* |
 
 Want to look first? Try the [live demo](https://samfrazier.github.io/due-this-week/demo.html) with sample data.
