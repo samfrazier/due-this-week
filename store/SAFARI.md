@@ -9,7 +9,7 @@ Safari extensions ship inside a small Mac app. Ours lives in `safari/Due This We
 | Bundle ID (extension) | `io.github.samfrazier.duethisweek.Extension` |
 | Platform | macOS 12 or newer (iPhone/iPad later) |
 | Version | 1.1.0 (`MARKETING_VERSION` in the Xcode project) |
-| App Store | https://apps.apple.com/app/id6834720024 (App Store Connect app ID 6834720024) |
+| App Store | https://apps.apple.com/app/id6834720024 (App Store Connect app ID 6834720024; Mac 1.1.0 live since Nov 26, 2026) |
 | Category | Productivity |
 
 ## How the Xcode project gets the extension
