@@ -18,10 +18,10 @@ Due This Week is free in every major browser:
 
 | Browser | Get it |
 |---|---|
-| **Microsoft Edge** | [![Get it from Microsoft Edge Add-ons](https://img.shields.io/badge/Get_it_from-Microsoft_Edge_Add--ons-0078D7?style=for-the-badge)](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc) |
+| **Microsoft Edge** | [![Get it from Microsoft Edge Add-ons](.github/badges/edge.svg)](https://microsoftedge.microsoft.com/addons/detail/nmdnkggpmjibggdmfkfohljgahbemckc) |
 | **Google Chrome** (also Brave, Opera, Vivaldi) | Chrome Web Store: *in review, coming soon* |
-| **Mozilla Firefox** (desktop and Android) | [![Get the add-on for Firefox](https://img.shields.io/badge/Get_the_add--on-Firefox_Add--ons-FF7139?style=for-the-badge)](https://addons.mozilla.org/firefox/addon/due-this-week/) |
-| **Safari** (Mac) | [![Download on the Mac App Store](https://img.shields.io/badge/Download_on_the-Mac_App_Store-0D96F6?style=for-the-badge)](https://apps.apple.com/app/id6834720024) |
+| **Mozilla Firefox** (desktop and Android) | [![Get the add-on for Firefox](.github/badges/firefox.svg)](https://addons.mozilla.org/firefox/addon/due-this-week/) |
+| **Safari** (Mac) | [![Download on the Mac App Store](.github/badges/mac-app-store.svg)](https://apps.apple.com/app/id6834720024) |
 
 Want to look first? Try the [live demo](https://samfrazier.github.io/due-this-week/demo.html) with sample data.
 
